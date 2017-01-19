@@ -33,6 +33,10 @@ func main() {
 	flag.StringVar(&url, "url", "", "URL")
 	flag.Parse()
 
+	if url == "" {
+		log.Fatal("--url must be specified")
+	}
+
 	db, err := sql.Open("postgres", "user=striketime dbname=striketime sslmode=disable")
 	if err != nil {
 		log.Fatal(err)
